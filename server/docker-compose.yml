@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  url-shortner-server:
+    container_name: url-shortner-server
+    environment:
+      - NODE_ENV=production
+    build:
+      context: ./
+    image: url-shortner-server
+    ports:
+      - "4000:4000"
