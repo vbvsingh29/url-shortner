@@ -14,7 +14,7 @@ function Home() {
         .get(`${API_ENDPOINT}/healthcheck`)
         .then((res) => {
           if (res.status === 200) {
-            console.log("object")
+            console.log("object");
             setLoading(false);
           }
         })
@@ -31,6 +31,7 @@ function Home() {
     >
       {loading && (
         <Spinner
+          zIndex="2"
           thickness="4px"
           speed="0.65s"
           emptyColor="gray.200"
