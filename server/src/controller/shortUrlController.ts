@@ -19,7 +19,7 @@ export async function handleRedirect(req: Request, res: Response) {
   if (!short) {
     return res.sendStatus(404);
   }
-
+console.log(short.destination,"sss")
   analytics.create({ shortUrl: short._id });
   res.redirect(short.destination);
 }
@@ -28,4 +28,15 @@ export async function fetchAnalytic(req: Request, res: Response) {
   const data = await analytics.find({}).lean();
 
   return res.send(data);
+}
+
+export async function getShortUrl(req: Request, res: Response) {
+  const { shortId } = req.params;
+  const short = await shortUrl.findOne({ shortId }).lean();
+
+  if (!short) {
+    return res.sendStatus(404);
+  }
+
+  return res.json(short);
 }
